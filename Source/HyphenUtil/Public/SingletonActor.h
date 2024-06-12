@@ -17,9 +17,9 @@ public:
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 protected:
 	static ASingletonActor* Instance;
-public:
+public:	
 	template <typename T>
-	static T* Get(UObject* WorldContextObject = nullptr)
+	static T* GetInstance(UObject* WorldContextObject = nullptr)
 	{
 		if (Instance != nullptr && IsValid(Instance))
 		{

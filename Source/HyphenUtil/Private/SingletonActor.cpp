@@ -15,7 +15,7 @@ void ASingletonActor::BeginPlay()
 	Super::BeginPlay();
 	if(IsValid(Instance))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("SingletonActor '%s' already exists!", *GetName()));
+		UE_LOG(LogTemp, Warning, TEXT("SingletonActor '%s' already exists!"), *Instance->GetName());
 		Destroy();
 		return;
 	}
