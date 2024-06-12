@@ -17,7 +17,15 @@ public:
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 protected:
 	static ASingletonActor* Instance;
-public:	
+public:
+
+	/** 
+	static AGameEventManager* Get(UObject* WorldContextObject = nullptr)
+	{
+		return GetInstance<AGameEventManager>(WorldContextObject);
+	}
+	*/
+	
 	template <typename T>
 	static T* GetInstance(UObject* WorldContextObject = nullptr)
 	{
