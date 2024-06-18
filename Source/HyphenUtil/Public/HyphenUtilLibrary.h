@@ -346,4 +346,23 @@ namespace HyphenUtil
 		// Remove spaces from the tag name
 		return CombineGameplayTagWithString(Tag.ToString(), ChildTag);
 	}
+
+	static bool TryCombineGameplayTagWithString(const FString& Tag, const FString& ChildTag, FGameplayTag& OutTag)
+	{
+		// Remove spaces from the tag name
+		FString CleanTagName = Tag;
+		CleanTagName.RemoveSpacesInline();
+		FString CleanChildTagName = ChildTag;
+		CleanChildTagName.RemoveSpacesInline();
+		const FString& CombinedString = FString::Printf(TEXT("%s.%s"), *CleanTagName, *CleanChildTagName);
+		if(FGameplayTag::IsValidGameplayTagString(CombinedString))
+		{
+			OutTag = FGameplayTag::RequestGameplayTag(*CombinedString);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }
