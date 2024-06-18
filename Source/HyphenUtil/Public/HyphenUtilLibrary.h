@@ -263,6 +263,12 @@ namespace HyphenUtil
 			? FindFirstObject<UEnum>(*EnumName, EFindFirstObjectOptions::ExactClass)->GetNameStringByIndex(EnumValue)
 			: FString("Invalid - are you sure enum uses UENUM() macro?");
 	}
+		
+	template<typename E>
+	static bool EnumHasFlag(E EnumValue, E EnumFlag)
+	{
+		return (static_cast<uint8>(EnumValue) & static_cast<uint8>(EnumFlag)) != 0;
+	}
 
 	template<typename E>
 	static FString EnumToString(const FString& EnumName, E EnumValue)
