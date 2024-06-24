@@ -260,7 +260,7 @@ namespace HyphenUtil
 	static FString EnumToString(const FString& EnumName, uint8 EnumValue)
 	{
 		return FindFirstObject<UEnum>(*EnumName, EFindFirstObjectOptions::ExactClass) != nullptr
-			? FindFirstObject<UEnum>(*EnumName, EFindFirstObjectOptions::ExactClass)->GetNameStringByIndex(EnumValue)
+			? FindFirstObject<UEnum>(*EnumName, EFindFirstObjectOptions::ExactClass)->GetNameStringByValue(EnumValue)
 			: FString("Invalid - are you sure enum uses UENUM() macro?");
 	}
 		
