@@ -4,6 +4,7 @@
 
 #include "GameplayTagContainer.h"
 #include "HyphenUtil.h"
+#include "Blueprint/WidgetTree.h"
 
 UHyphenUtilLibrary::UHyphenUtilLibrary(const FObjectInitializer& ObjectInitializer)
 : Super(ObjectInitializer)
@@ -55,3 +56,24 @@ int32 UHyphenUtilLibrary::GetObjReferenceCount(UObject* Obj, TArray<UObject*>* O
 	}
 	return ReferredToObjects.Num();
 }
+
+void UHyphenUtilLibrary::GetWidgetsFromWidgetTree(UUserWidget* Widget, TSubclassOf<UWidget> WidgetClass,
+	TArray<UWidget*>& OutWidgets)
+{
+	if(Widget == nullptr || WidgetClass == nullptr)
+	{
+		return;
+	}
+	OutWidgets.Reset();
+	// Get all widgets from widget tree
+	TArray<UWidget*> AllWidgets;
+	Widget->WidgetTree->GetAllWidgets(AllWidgets);
+	for(auto* ComponentWidget : AllWidgets)
+	{
+		if(ComponentWidget->IsA(WidgetClass))
+		{
+			OutWidgets.Emplace(ComponentWidget);
+		}
+	}
+}
+

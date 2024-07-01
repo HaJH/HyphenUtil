@@ -43,6 +43,9 @@ public:
 	static float NormalDistribution(float Mean, float StandardDeviation, float Coefficient, float X);
 	
 	static int32 GetObjReferenceCount(UObject* Obj, TArray<UObject*>* OutReferredToObjects = nullptr);
+
+	UFUNCTION(BlueprintCallable, CallInEditor, Category = "HyphenUtil|Widget", meta=(DefaultToSelf="Widget"))
+	static void GetWidgetsFromWidgetTree(UUserWidget* Widget, TSubclassOf<class UWidget> WidgetClass, TArray<class UWidget*>& OutWidgets);
 };
 
 namespace HyphenUtil
@@ -254,7 +257,7 @@ namespace HyphenUtil
 
 		return nullptr;
 	}
-
+	
 // #define GETENUMSTRING(etype, evalue) ( (FindObject<UEnum>(ANY_PACKAGE, TEXT(etype), true) != nullptr) ? FindObject<UEnum>(ANY_PACKAGE, TEXT(etype), true)->GetNameStringByIndex((int32)evalue) : FString("Invalid - are you sure enum uses UENUM() macro?") )
 
 	static FString EnumToString(const FString& EnumName, uint8 EnumValue)
