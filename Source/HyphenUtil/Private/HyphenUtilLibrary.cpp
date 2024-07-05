@@ -4,6 +4,10 @@
 
 #include "GameplayTagContainer.h"
 #include "HyphenUtil.h"
+#include "ISettingsCategory.h"
+#include "ISettingsContainer.h"
+#include "ISettingsModule.h"
+#include "ISettingsSection.h"
 #include "Blueprint/WidgetTree.h"
 
 UHyphenUtilLibrary::UHyphenUtilLibrary(const FObjectInitializer& ObjectInitializer)
@@ -73,6 +77,21 @@ void UHyphenUtilLibrary::GetWidgetsFromWidgetTree(UUserWidget* Widget, TSubclass
 		if(ComponentWidget->IsA(WidgetClass))
 		{
 			OutWidgets.Emplace(ComponentWidget);
+		}
+	}
+}
+
+void UHyphenUtilLibrary::SaveSettings(FName Container, FName Category, FName Section)
+{
+	ISettingsModule* SettingsModule = FModuleManager::GetModulePtr<ISettingsModule>("Settings");
+	if(auto SettingContainer = SettingsModule->GetContainer(Container))
+	{
+		if(auto SettingCategory = SettingContainer->GetCategory(Category))
+		{
+			if(auto SettingSection = SettingCategory->GetSection(Section))
+			{
+				SettingSection->Save();
+			}
 		}
 	}
 }

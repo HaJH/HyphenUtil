@@ -46,6 +46,14 @@ public:
 
 	UFUNCTION(BlueprintCallable, CallInEditor, Category = "HyphenUtil|Widget", meta=(DefaultToSelf="Widget"))
 	static void GetWidgetsFromWidgetTree(UUserWidget* Widget, TSubclassOf<class UWidget> WidgetClass, TArray<class UWidget*>& OutWidgets);
+
+	/**
+	 *	@param Container - The name of the container to save settings. e.g. "Editor", "Project", "Game", "Engine"
+	 *	@param Category - The name of the category to save settings. e.g. "Editor", "Engine", "Game", "Plugins", "General"
+	 *	@param Section - The name of the section to save settings. e.g. "GameplayTags", "GraphicsSettings", "InputSettings", class's FName
+	 */
+	UFUNCTION(BlueprintCallable, CallInEditor, Category = "HyphenUtil|Settings")
+	static void SaveSettings(FName Container, FName Category, FName Section);
 };
 
 namespace HyphenUtil

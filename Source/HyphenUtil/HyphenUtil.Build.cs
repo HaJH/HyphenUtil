@@ -27,7 +27,7 @@ public class HyphenUtil : ModuleRules
 			{
 				"Core",
 				"GameplayTags",
-				"UMG"
+				"UMG",
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);
@@ -40,6 +40,7 @@ public class HyphenUtil : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
+				"Settings"
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
