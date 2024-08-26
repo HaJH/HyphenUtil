@@ -632,7 +632,7 @@ namespace HyphenUtil
 		const FString& CombinedString = FString::Printf(TEXT("%s.%s"), *CleanTagName, *CleanChildTagName);
 		if(FGameplayTag::IsValidGameplayTagString(CombinedString))
 		{
-			OutTag = FGameplayTag::RequestGameplayTag(*CombinedString);
+			OutTag = FGameplayTag::RequestGameplayTag(*CombinedString, false);
 			return true;
 		}
 		else
