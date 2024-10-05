@@ -12,6 +12,6 @@ struct HYPHENUTIL_API FHyphenTableRow : public FTableRowBase
 	GENERATED_USTRUCT_BODY()
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	FName RowName = NAME_None;
+	FName RowNameInternal = NAME_None;
 	virtual void OnDataTableChanged(const UDataTable* InDataTable, const FName InRowName) override;
 };

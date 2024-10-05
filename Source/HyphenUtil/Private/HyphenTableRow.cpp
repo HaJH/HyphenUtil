@@ -5,5 +5,5 @@
 
 void FHyphenTableRow::OnDataTableChanged(const UDataTable* InDataTable, const FName InRowName)
 {
-	RowName = InRowName;
+	RowNameInternal = InRowName;
 }
