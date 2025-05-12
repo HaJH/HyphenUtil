@@ -482,7 +482,7 @@ namespace HyphenUtil
 	 * function.
 	 *
 	 * @tparam E The enum type, which should be an enum class with UENUM() macro.
-	 * @param EnumName The name of the enum.
+	 * @param EnumName The name of the enum. (example. ESomeEnumType)
 	 * @param EnumValue The enum value to convert to string.
 	 * @return The string representation of the enum value.
 	 */
