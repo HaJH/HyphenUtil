@@ -590,7 +590,7 @@ namespace HyphenUtil
 		FString CleanChildTagName = ChildTag;
 		CleanChildTagName.RemoveSpacesInline();
 		const FString& CombinedString = FString::Printf(TEXT("%s.%s"), *CleanTagName, *CleanChildTagName);
-		return FGameplayTag::RequestGameplayTag(*CombinedString);
+		return FGameplayTag::RequestGameplayTag(*CombinedString, false);
 	}
 
 	/**
